@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dartscoreboard-dhbw-projekt';
+
+  public onClick(): void {
+    console.log('HIIIII');
+  }
 }
