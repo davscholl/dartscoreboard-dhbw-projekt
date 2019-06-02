@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +9,6 @@ export class AppComponent {
   title = 'dartscoreboard-dhbw-projekt';
 
   public onClick(): void {
-    console.log('HIIIII');
+    console.log('HIIII');
   }
 }
