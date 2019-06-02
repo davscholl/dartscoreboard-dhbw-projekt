@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'dartscoreboard-dhbw-projekt';
 
   public onClick(): void {
-    console.log('HIIIII');
+    console.log('HIIII');
   }
 }
