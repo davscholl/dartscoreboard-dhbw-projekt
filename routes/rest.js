@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+
 const mongoose = require('mongoose')
-const userSchema = require('./userSchema.js')
-const User = mongoose.model('user', userSchema, 'user')
+var User = require('./user.js')
 const connectionString = 'mongodb+srv://admin:DHBWDart2019!@dartscoreboarddb-p4g37.mongodb.net/test?retryWrites=true&w=majority'
 const connector = mongoose.connect(connectionString)
+var jwt = require('jwt-simple')
 
 const finishes2 = require('./finishes2.json');
 const finishes3 = require('./finishes3.json');
@@ -29,32 +30,38 @@ router.get('/finish/:type/:score', function(req, res) {
 });
 
 //USER
-async function createUser(username, email, password) {
-  return new User({
-    username,
-    email,
-    password
-  }).save()
-}
+router.post('/login', async (req, res) =>{
+  let userData = req.body;
+  let user = await User.findOne({email: userData.email});
 
-async function findUser(username) {
-  return await User.findOne({ username })
-}
-
-router.post('/users', async function(req, res) {  
-  const {username, email, password} = req.body
-  console.log(req.body);
-
-  let user = await connector.then(async () => {
-    return findUser(username)
-  })
-
-  if (!user) {
-    user = await createUser(username, email, password)
+  if(!user){
+    res.status(401).send({message: 'Email or Password invalid'})
   }
 
-  console.log(user)
-  res.sendStatus(200)
+  if(userData.password != user.password){
+    res.status(401).send({message: 'Email or Password invalid'})
+  }
+
+  let payload = {}
+  let token = jwt.encode(payload, '123456')
+
+  res.status(200).send({token})
 });
+
+router.post('/register', (req, res) =>{
+  let userData = req.body;
+  console.log(userData);
+
+  let user = new User(userData);
+
+  user.save((err, result) => {
+    if(err){
+      console.log("User konnte nicht angelegt werden");
+    } else {
+      res.sendStatus(200);
+    }
+  })
+});
+
 
 module.exports = router;
