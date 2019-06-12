@@ -13,8 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
-import { ChatingComponent } from './chating/chating.component';
-import { ChatListComponent } from './chat-list/chat-list.component';
+import { ChatComponent } from './chat/chat.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
@@ -36,8 +35,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     JoinGameComponent,
     LoginComponent,
     HeaderComponent,
-    ChatingComponent,
-    ChatListComponent
+    ChatComponent
   ],
   imports: [
     RouterModule.forRoot(meineRouten),
