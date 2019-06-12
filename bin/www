@@ -7,6 +7,10 @@
 var app = require('../app');
 var debug = require('debug')('dartscoreboard-dhbw-projekt:server');
 var http = require('http');
+var mongoose = require('mongoose');
+
+
+
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +24,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+//var io = require('socket.io')(server);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -88,3 +93,65 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+const socket = require('socket.io');
+let users;
+let count;
+let chatRooms;
+let messagesArray = [];
+const connectionString = 'mongodb+srv://admin:DHBWDart2019!@dartscoreboarddb-p4g37.mongodb.net/test?retryWrites=true&w=majority';
+
+mongoose.connect(connectionString, (err, Database) => {
+    if (err) {
+        console.log(err);
+        return false;
+    }
+    console.log('Connected to MongoDB');
+
+    const db = Database.db('test');
+    users = db.collection('users'); // getting the users collection
+    chatRooms = db.collection('lobbies'); /* getting the chatRooms collection.
+    This collection would store chats in that room*/
+
+    var io = require('socket.io')(server);
+
+    socket.on('join', (data) => {
+      socket.join(data.room);
+      chatRooms.find({}).toArray((err, rooms) => {
+          if (err) {
+              console.log(err);
+              return false;
+          }
+          count = 0;
+          rooms.forEach((room) => {
+              if (room.name === data.room) {
+                  count++;
+              }
+          });
+          // Create the chatRoom if not already created
+          if (count === 0) {
+              chatRooms.insert({ name: data.room, messages: [] });
+          }
+      });
+    });
+
+    socket.on('message', (data) => {
+      // emitting the 'new message' event to the clients in that room
+      io.in(data.room).emit('new message', {user: data.user, message: data.message});
+      // save the message in the 'messages' array of that chat-room
+      chatRooms.update({name: data.room}, { $push: { messages: { user: data.user, message: data.message } } }, (err, res) => {
+          if(err) {
+              console.log(err);
+              return false;
+          }
+      });
+    });
+
+    socket.on('typing', (data) => {
+      // Broadcasting to all the users except the one typing
+      socket.broadcast.in(data.room).emit('typing', {data: data, isTyping: true});
+  });
+
+});
+
+

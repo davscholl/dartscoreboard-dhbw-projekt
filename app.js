@@ -4,9 +4,12 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 
-var apiRouter = require('./routes/finishes');
+
+
+var apiRouter = require('./routes/rest');
 
 var app = express();
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -14,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist/dartscoreboard-dhbw-projekt')));
 app.use('/', express.static(path.join(__dirname, 'dist/dartscoreboard-dhbw-projekt')));
 app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -30,5 +34,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send(err.status);
 });
+
+
+
+
+
 
 module.exports = app;
