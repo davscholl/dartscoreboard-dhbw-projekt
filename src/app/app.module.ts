@@ -1,8 +1,9 @@
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppMaterialModule } from './app.material.module';
+import { AppMaterialModule } from './modules/app.material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CreateGameComponent } from './create-game/create-game.component';
@@ -12,15 +13,19 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { ChatingComponent } from './chating/chating.component';
+import { ChatListComponent } from './chat-list/chat-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
+
 
 const meineRouten: Routes = [
   { path: '', component: MainComponent },
   { path: 'game', component: GameComponent },
 ];
 
+const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ const meineRouten: Routes = [
     GameComponent,
     JoinGameComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChatingComponent,
+    ChatListComponent
   ],
   imports: [
     RouterModule.forRoot(meineRouten),
@@ -39,7 +46,8 @@ const meineRouten: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

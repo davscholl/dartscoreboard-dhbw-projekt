@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const mongoose = require('mongoose')
-var User = require('./user.js')
-const connectionString = 'mongodb+srv://admin:DHBWDart2019!@dartscoreboarddb-p4g37.mongodb.net/test?retryWrites=true&w=majority'
-const connector = mongoose.connect(connectionString)
-var jwt = require('jwt-simple')
+const mongoose = require('mongoose');
+var User = require('./user.js');
+const connectionString = 'mongodb+srv://admin:DHBWDart2019!@dartscoreboarddb-p4g37.mongodb.net/test?retryWrites=true&w=majority';
+const connector = mongoose.connect(connectionString);
+var jwt = require('jwt-simple');
 
 const finishes2 = require('./finishes2.json');
 const finishes3 = require('./finishes3.json');

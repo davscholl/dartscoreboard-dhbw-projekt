@@ -7,4 +7,4 @@ module.exports = new mongoose.model('User', {
   average: Number,
   numberOfThrows: Number,
   numberOfGames: Number
-})
+});
