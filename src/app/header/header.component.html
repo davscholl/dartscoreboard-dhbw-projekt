@@ -1,0 +1,24 @@
+<div class="divleft">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Create Game</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>compare_arrows</mat-icon>
+      <span>Join Game</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>show_chart</mat-icon>
+      <span>Stats</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>exit_to_app</mat-icon>
+      <span>logout</span>
+    </button>
+  </mat-menu>
+
+</div>
