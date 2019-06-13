@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material';
 
 
 const meineRouten: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', component: LoginComponent },
   { path: 'game', component: GameComponent },
 ];
 

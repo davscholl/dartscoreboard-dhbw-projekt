@@ -1,3 +1,37 @@
-<p>
-  login works!
-</p>
+<!-- <form (submit)="login()">
+  <div>
+    <label for="email">Email address</label>
+    <input name="email" placeholder="Enter email" [(ngModel)]="email">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Password" [(ngModel)]="password">
+  </div>
+  <button type="submit" class="btn btn-default">Sign in!</button>
+</form>
+ -->
+ <div class="docs-example-viewer-wrapper">
+   <div class="docs-example-viewer-title">
+     Login
+   </div>
+   <div class="div-login">
+      <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+          <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" name="email" ngModel #first="ngModel">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+          <input matInput type="password" name="password" placeholder="Password" ngModel>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" style="background-color: #3f51b5">Submit</button>
+        </form>
+       <!--  <p>First name value: {{ first.value }}</p>
+        <p>First name valid: {{ first.valid }}</p>
+        <p>Form value: {{ f.value | json }}</p>
+        <p>Form valid: {{ f.valid }}</p> -->
+   </div>
+ </div>
+
+
+ <!-- <button mat-button (click)="login()">Sign in!</button> -->

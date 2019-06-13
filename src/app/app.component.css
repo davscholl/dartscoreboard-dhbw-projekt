@@ -1,6 +1,21 @@
-div .mainclass {
-text-align: center;
-width: 300px;
-border: 15px solid green;
-margin: 4px;
+.maindivclass {
+  text-align: center;
+  width: 100%;
+  height: 95%;
+  background-color: white;
+  top: 5%;
+  position: fixed;
+  min-height: 70px;
+  }
+
+.head {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  height: 4%;
+  background: #3f51b5;
+  top: 0%;
+  box-shadow: 0 6px 6px rgba(0,0,0,.24), 0 0 6px rgba(0,0,0,.12);
 }
+
+
