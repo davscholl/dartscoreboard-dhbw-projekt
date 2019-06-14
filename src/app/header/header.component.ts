@@ -15,5 +15,13 @@ export class HeaderComponent implements OnInit {
   joinGame(): void {
     this.router.navigate(['join']);
   }
+  createGame(): void {
+    this.router.navigate(['create']);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
 
 }

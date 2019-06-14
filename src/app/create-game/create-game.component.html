@@ -1,7 +1,24 @@
-
-<p>
-    <textarea readonly>{{ this.gameID }}</textarea>
-</p>
-
-<button mat-raised-button color="primary" style="background-color: #3f51b5; margin-right: 1%" (click)="newGame()">Create</button>
-<button mat-raised-button color="primary" style="background-color: #3f51b5; margin-right: 1%" routerLink="/game">Start</button>
+<div class="docs-example-viewer-wrapper">
+  <div class="docs-example-viewer-title">
+    Create Game
+  </div>
+  <div class="div-create">
+    <p>
+        {{ this.gameID }}
+    </p>
+    <mat-form-field>
+      <mat-label>Start Scoure</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="sScoure" (selectionChange)="this.document.startScoure = this.selectedValue">
+        <mat-option *ngFor="let scour of scoure" [value]="scour.value">
+          {{scour.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>
+      Selectet:  {{ this.selectedValue }} <br>
+      Document:  {{ this.document.startScoure }}
+    </p>
+    <!-- <button mat-raised-button color="primary" style="background-color: #3f51b5; margin-right: 1%" (click)="newGame()">Create</button> -->
+    <button mat-raised-button color="primary" style="background-color: #3f51b5" (click)="start()">Start</button>
+  </div>
+</div>

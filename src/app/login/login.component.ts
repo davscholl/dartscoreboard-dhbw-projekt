@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ApiRequestService } from '../services/api-request.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   constructor(
-    private http:HttpClient,
+    private apirequestservice: ApiRequestService,
     public router: Router
     ) { }
 
@@ -19,23 +19,9 @@ export class LoginComponent {
   login(f: NgForm): void {
     const param = f.value;
     f.resetForm();
-    this.http.post('/api/login', param)
-      .subscribe(
-        (val) => {
-            const obj = val;
-            let ob: string;
-            ob = JSON.stringify(obj);
-            localStorage.setItem('_ID', ob);
-            this.router.navigate(['create']);
-        },
-        response => {
-
-            console.log('POST call in error', response);
-        },
-        () => {
-            console.log('The POST observable is now completed.');
-        });
+    if (this.apirequestservice.postLogin(param)) {
+      this.router.navigate(['create']);
     }
-
+    }
 
 }

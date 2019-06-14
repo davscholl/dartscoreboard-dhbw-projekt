@@ -25,6 +25,7 @@ export class JoinGameComponent implements OnInit {
 
   join() {
     this.documentService.getDocument(this.gameID);
+    localStorage.setItem('gameID', this.gameID);
     this.router.navigate(['game']);
   }
 

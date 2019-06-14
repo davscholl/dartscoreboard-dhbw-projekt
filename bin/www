@@ -95,7 +95,8 @@ function onListening() {
 
 
 var documents = {};
-io.set('origins', 'http://localhost:3001');
+
+
 io.on('connection', socket => {
   let previousId;
   const safeJoin = currentId => {
