@@ -50,7 +50,7 @@ router.put('/update/:id', async (req, res) =>{
       }
       return res.send(user._id);
     });
-  } 
+  }
 );
 
 //params: email, password
@@ -67,9 +67,9 @@ router.post('/login', async (req, res) =>{
   }
 
   let payload = {}
-  let token = jwt.encode(payload, '123456')
+  //let token = jwt.encode(payload, '123456')
 
-  res.status(200).send({token})
+  res.send(user._id);
 });
 
 //params: username, email, password
@@ -87,14 +87,14 @@ router.post('/register', (req, res) =>{
   user.save((err, result) => {
     if(err){
       console.log("User konnte nicht angelegt werden");
-      res.sendStatus(500);
+      res.sendStatus(403);
     } else {
-      res.sendStatus(200);
+      res.status(200).send({message: 'OK'});
     }
   })
 });
 
-router.post
+//router.post
 
 
 module.exports = router;

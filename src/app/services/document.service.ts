@@ -15,8 +15,11 @@ export class DocumentService {
     this.socket.emit('getDoc', id);
   }
 
-  newDocument() {
-    this.socket.emit('addDoc', { id: this.docId(), doc: '' });
+  newDocument(): string {
+    const _ID = this.docId();
+    const id = JSON.stringify(_ID);
+    this.socket.emit('addDoc', { id: (id), doc: '' , startScoure: 501});
+    return id;
   }
 
   editDocument(document: Document) {
@@ -30,6 +33,7 @@ export class DocumentService {
     for (let i = 0; i < 5; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
+
 
     return text;
   }

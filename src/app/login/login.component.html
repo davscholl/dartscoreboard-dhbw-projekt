@@ -17,14 +17,15 @@
    <div class="div-login">
       <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
           <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email" name="email" ngModel #first="ngModel">
+          <input matInput placeholder="Email" name="email" autocomplete="email"  ngModel #first="ngModel">
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-          <input matInput type="password" name="password" placeholder="Password" ngModel>
+          <input matInput type="password" name="password" placeholder="Password" autocomplete="current-password" ngModel>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" style="background-color: #3f51b5">Submit</button>
+          <button mat-raised-button color="primary" style="background-color: #3f51b5; margin-right: 1%">Submit</button>
+          <button mat-raised-button color="primary" style="background-color: #751692" routerLink="/register" >Register</button>
         </form>
        <!--  <p>First name value: {{ first.value }}</p>
         <p>First name valid: {{ first.valid }}</p>
@@ -34,4 +35,4 @@
  </div>
 
 
- <!-- <button mat-button (click)="login()">Sign in!</button> -->
+

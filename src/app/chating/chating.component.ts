@@ -19,7 +19,7 @@ export class ChatingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.docSub = this.documentService.currentDocument.pipe(
-      startWith({ id: '', doc: 'Select an existing document or create a new one to get started'})
+      startWith({ id: '', doc: 'Select an existing document or create a new one to get started', startScoure: 501})
     ).subscribe(document => this.document = document);
   }
 

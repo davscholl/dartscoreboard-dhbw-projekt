@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DocumentService } from 'src/app/services/document.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-game',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JoinGameComponent implements OnInit {
 
-  constructor() { }
+  currentDocId: string;
+  private docsub: Subscription;
+  gameID: string;
+
+  constructor(
+    private documentService: DocumentService,
+    public router: Router
+    ) { }
 
   ngOnInit() {
+    this.docsub = this.documentService.currentDocument.subscribe(doc => this.currentDocId = doc.id);
+  }
+
+  join() {
+    this.documentService.getDocument(this.gameID);
+    this.router.navigate(['game']);
   }
 
 }

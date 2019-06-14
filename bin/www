@@ -121,6 +121,11 @@ io.on('connection', socket => {
     socket.to(doc.id).emit('document', doc);
   });
 
+  socket.on('count', startScoure => {
+    documents[startScoure.id] =startScoure;
+    socket.to(startScoure.id).emit('document', startScoure);
+  });
+
   io.emit('documents', Object.keys(documents));
 });
 

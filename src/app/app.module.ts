@@ -18,11 +18,15 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
+import { RegisterComponent } from './register/register.component';
 
 
 const meineRouten: Routes = [
   { path: '', component: LoginComponent },
   { path: 'game', component: GameComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'join', component: JoinGameComponent },
+  { path: 'create', component: CreateGameComponent }
 ];
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
@@ -37,7 +41,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     LoginComponent,
     HeaderComponent,
     ChatingComponent,
-    ChatListComponent
+    ChatListComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(meineRouten),
