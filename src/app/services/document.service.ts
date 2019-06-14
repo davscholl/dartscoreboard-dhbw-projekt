@@ -17,9 +17,8 @@ export class DocumentService {
 
   newDocument(): string {
     const _ID = this.docId();
-    const id = JSON.stringify(_ID);
-    this.socket.emit('addDoc', { id: (id), doc: '' , startScoure: 501});
-    return id;
+    this.socket.emit('addDoc', { id: (_ID), doc: '' , startScoure: 501});
+    return _ID;
   }
 
   editDocument(document: Document) {
