@@ -106,12 +106,14 @@ io.on('connection', socket => {
 
   socket.on('getDoc', docId => {
     safeJoin(docId);
+    socket.join(docId);
     socket.emit('document', documents[docId]);
   });
 
   socket.on('addDoc', doc => {
     documents[doc.id] = doc;
     safeJoin(doc.id);
+    socket.join(doc.id);
     io.emit('documents', Object.keys(documents));
     socket.emit('document', doc);
   });
@@ -119,11 +121,6 @@ io.on('connection', socket => {
   socket.on('editDoc', doc => {
     documents[doc.id] = doc;
     socket.to(doc.id).emit('document', doc);
-  });
-
-  socket.on('count', startScoure => {
-    documents[startScoure.id] =startScoure;
-    socket.to(startScoure.id).emit('document', startScoure);
   });
 
   io.emit('documents', Object.keys(documents));
