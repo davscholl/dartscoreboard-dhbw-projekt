@@ -1,6 +1,8 @@
 export class Document {
     id: string;
     doc: string;
-    startScoure: string;
+    startScoure: number;
+    playerA: string;
+    playerB: string;
 }
 

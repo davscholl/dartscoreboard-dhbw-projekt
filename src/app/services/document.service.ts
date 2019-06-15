@@ -17,7 +17,7 @@ export class DocumentService {
 
   newDocument(): string {
     const _ID = this.docId();
-    this.socket.emit('addDoc', { id: (_ID), doc: '' , startScoure: 501});
+    this.socket.emit('addDoc', { id: (_ID), doc: '' , startScoure: 501, playerA: '', playerB: ''});
     return _ID;
   }
 

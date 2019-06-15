@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Document } from 'src/app/modules/document';
 import { Router } from '@angular/router';
 export interface Scoure {
-  value: string;
+  value: number;
   viewValue: string;
 }
 
@@ -16,12 +16,13 @@ export interface Scoure {
 })
 export class CreateGameComponent implements OnInit, OnDestroy {
 
-  selectedValue = '501';
+  selectedValue = 501;
+  players: object;
 
   scoure: Scoure[] = [
-    {value: '301', viewValue: '301'},
-    {value: '501', viewValue: '501'},
-    {value: '701', viewValue: '701'}
+    {value: 301, viewValue: '301'},
+    {value: 501, viewValue: '501'},
+    {value: 701, viewValue: '701'}
   ];
 
   document: Document;
@@ -46,12 +47,15 @@ export class CreateGameComponent implements OnInit, OnDestroy {
     localStorage.setItem('gameID', this.gameID);
     this.docsub = this.documentService.currentDocument.subscribe(doc => this.gameID = doc.id);
     this.docSub = this.documentService.currentDocument.subscribe(document => this.document = document);
-  }
+    }
 
   start(): void {
+    this.document.playerA = localStorage.getItem('_ID');
     this.documentService.editDocument(this.document);
+    console.log(this.document);
     this.router.navigate(['game']);
   }
+
 
   /* local(): void{
     console.log(localStorage.getItem('_ID'));
