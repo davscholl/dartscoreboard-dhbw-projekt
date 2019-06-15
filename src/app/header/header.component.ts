@@ -20,7 +20,13 @@ export class HeaderComponent implements OnInit {
   }
   createGame(): void {
     if (localStorage.getItem('login') === 'true') {
-    this.router.navigate(['create']);
+      this.router.navigate(['create']);
+    }
+  }
+
+  stats(): void {
+    if (localStorage.getItem('login') === 'true') {
+      this.router.navigate(['stats']);
     }
   }
 

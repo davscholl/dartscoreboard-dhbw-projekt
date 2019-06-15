@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { RegisterComponent } from './register/register.component';
+import { StatsComponent } from './stats/stats.component';
 
 
 const meineRouten: Routes = [
@@ -23,7 +24,8 @@ const meineRouten: Routes = [
   { path: 'game', component: GameComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'join', component: JoinGameComponent },
-  { path: 'create', component: CreateGameComponent }
+  { path: 'create', component: CreateGameComponent },
+  { path: 'stats', component: StatsComponent }
 ];
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
@@ -36,7 +38,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     JoinGameComponent,
     LoginComponent,
     HeaderComponent,
-    RegisterComponent
+    RegisterComponent,
+    StatsComponent
   ],
   imports: [
     RouterModule.forRoot(meineRouten),

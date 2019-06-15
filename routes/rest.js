@@ -94,16 +94,6 @@ router.post('/register', (req, res) =>{
   })
 });
 
-router.get('/username/:id', async (req, res) =>{
-  try{
-  let users = await User.findOne({_id: req.params.id}, '-password -__v');
-  res.send(users.username);
-  } catch (error){
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
-
 
 //router.post
 

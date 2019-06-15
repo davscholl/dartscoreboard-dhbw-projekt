@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { DocumentService } from 'src/app/services/document.service';
 import { Subscription } from 'rxjs';
 import { Document } from 'src/app/modules/document';
@@ -9,7 +9,7 @@ import { startWith } from 'rxjs/operators';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css']
 })
-export class GameComponent implements OnInit, OnDestroy, OnChanges {
+export class GameComponent implements OnInit, OnDestroy {
 
   playerA: string;
   playerB: string;
@@ -40,9 +40,7 @@ export class GameComponent implements OnInit, OnDestroy, OnChanges {
     this.docSub.unsubscribe();
   }
 
-  ngOnChanges() {
 
-  }
 
 
   start(): void {

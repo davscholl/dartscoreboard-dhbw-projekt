@@ -61,7 +61,6 @@ export class CreateGameComponent implements OnInit, OnDestroy {
     localStorage.setItem('player', 'A');
     this.document.sPlayerA = this.document.startScoure;
     this.document.sPlayerB = this.document.startScoure;
-    this.document.playerA = localStorage.getItem('_ID');
     this.documentService.editDocument(this.document);
     console.log(this.document);
     this.router.navigate(['game']);
