@@ -5,6 +5,7 @@ import { Document } from 'src/app/modules/document';
 import { Router } from '@angular/router';
 import { startWith } from 'rxjs/operators';
 
+
 export interface Scoure {
   value: number;
   viewValue: string;
@@ -36,9 +37,10 @@ export class CreateGameComponent implements OnInit, OnDestroy {
     private router: Router
     ) { }
 
+    //neues leeres dukoment, dummy
   ngOnInit() {
       this.docSub = this.documentService.currentDocument.pipe(
-      startWith({  id: '', doc: '' , startScoure: 501 , playerA: '', playerB: '', sPlayerA: 501, sPlayerB: 501})
+      startWith({  id: '', doc: '' , startScoure: 501 , playerA: '', playerB: '', sPlayerA: 501, sPlayerB: 501, whosTurn: ''})
       ).subscribe(document => this.document = document);
       this.newGame();
   }
@@ -47,6 +49,7 @@ export class CreateGameComponent implements OnInit, OnDestroy {
     this.docSub.unsubscribe();
   }
 
+  //erstellen neues dukoment
   newGame(): void {
     this.gameID = this.documentService.newDocument();
     localStorage.setItem('gameID', this.gameID);

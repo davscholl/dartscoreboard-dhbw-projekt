@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiRequestService } from '../services/api-request.service';
 import { HttpClient } from '@angular/common/http';
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent {
 
+  username: Observable<any[]>;
   constructor(
     private apirequestservice: ApiRequestService,
     public router: Router,
@@ -22,9 +24,11 @@ export class LoginComponent {
     const param = f.value;
     f.resetForm();
     if (this.apirequestservice.postLogin(param)) {
-      this.httpClient.get<Customer[]>("127.0.0.1:3000/customers").do(console.log);
       this.router.navigate(['join']);
     }
-    }
+      }
 
 }
+
+
+

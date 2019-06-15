@@ -6,5 +6,6 @@ export class Document {
     playerB: string;
     sPlayerA: number;
     sPlayerB: number;
+    whosTurn: string;
 }
 
