@@ -4,5 +4,7 @@ export class Document {
     startScoure: number;
     playerA: string;
     playerB: string;
+    sPlayerA: number;
+    sPlayerB: number;
 }
 

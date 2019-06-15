@@ -1,0 +1,36 @@
+.left-card {
+  width: 13%;
+  top: 8%;
+  right: 16%;
+  position: fixed;
+  height: 92%;
+}
+
+.right-card {
+  width: 13%;
+  top: 8%;
+  right: 2%;
+  position: fixed;
+  height: 92%;
+}
+
+.scour-list {
+  line-height: 0.5;
+}
+
+.left-div {
+  width: 30%;
+  top: 8%;
+  left: 10%;
+  position: fixed;
+  height: 92%;
+}
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+

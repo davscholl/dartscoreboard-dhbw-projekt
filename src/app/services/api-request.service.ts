@@ -18,6 +18,7 @@ export class ApiRequestService {
             let ob: string;
             ob = JSON.stringify(obj);
             localStorage.setItem('_ID', ob);
+            localStorage.setItem('login', 'true');
             return true;
         },
         response => {

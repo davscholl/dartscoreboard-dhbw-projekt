@@ -12,11 +12,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+
   joinGame(): void {
-    this.router.navigate(['join']);
+    if (localStorage.getItem('login') === 'true') {
+      this.router.navigate(['join']);
+    }
   }
   createGame(): void {
+    if (localStorage.getItem('login') === 'true') {
     this.router.navigate(['create']);
+    }
   }
 
   logout(): void {
