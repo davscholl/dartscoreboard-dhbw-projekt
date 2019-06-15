@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiRequestService } from '../services/api-request.service';
 import { HttpClient } from '@angular/common/http';
-import {Observable} from "rxjs/Observable";
+//import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class LoginComponent {
 
-  username: Observable<any[]>;
+  //username: Observable<any[]>;
   constructor(
     private apirequestservice: ApiRequestService,
     public router: Router,
