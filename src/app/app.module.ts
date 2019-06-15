@@ -10,7 +10,6 @@ import { CreateGameComponent } from './create-game/create-game.component';
 import { GameComponent } from './game/game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
 import { LoginComponent } from './login/login.component';
-import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +31,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     CreateGameComponent,
     GameComponent,
     JoinGameComponent,

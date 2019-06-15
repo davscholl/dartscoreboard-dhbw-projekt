@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { DocumentService } from 'src/app/services/document.service';
 import { Subscription } from 'rxjs';
 import { Document } from 'src/app/modules/document';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game',
@@ -21,18 +22,20 @@ export class GameComponent implements OnInit, OnDestroy {
   secondDart: number;
   thirdDart: number;
 
-  private docsub: Subscription;
   private docSub: Subscription;
   constructor(private documentService: DocumentService) { }
 
   ngOnInit() {
+    this.docSub = this.documentService.currentDocument.pipe(
+      startWith({  id: '', doc: '' , startScoure: 0 , playerA: '', playerB: '', sPlayerA: 501, sPlayerB: 501, whosTurn: ''})
+      ).subscribe(document => this.document = document);
     this.documentService.getDocument(localStorage.getItem('gameID'));
-    this.docSub = this.documentService.currentDocument.subscribe(document => this.document = document);
     console.log(this.document);
     this.player = localStorage.getItem('player');
+    this.start();
   }
 
-  count(): void {
+  start(): void {
     this.player = localStorage.getItem('player');
     this.playerA = this.document.playerA;
     this.playerB = this.document.playerB;
@@ -67,7 +70,11 @@ export class GameComponent implements OnInit, OnDestroy {
       }
       this.document.sPlayerA = temp;
       this.scoureA.push(temp);
+      this.scoureB.push(this.document.sPlayerB);
       this.documentService.editDocument(this.document);
+      console.log(this.document);
+      localStorage.setItem('score', this.document.sPlayerA.toString());
+      localStorage.setItem('scoreB', this.document.sPlayerB.toString());
     }
 
     if (this.player === 'B') {
@@ -89,7 +96,11 @@ export class GameComponent implements OnInit, OnDestroy {
       }
       this.document.sPlayerB = temp;
       this.scoureB.push(temp);
+      this.scoureA.push(this.document.sPlayerA);
       this.documentService.editDocument(this.document);
+      localStorage.setItem('scoreA', this.document.sPlayerA.toString());
+      localStorage.setItem('scoreB', this.document.sPlayerB.toString());
+      console.log(this.document);
     }
 
   }
