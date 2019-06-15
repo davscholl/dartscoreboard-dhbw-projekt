@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { DocumentService } from 'src/app/services/document.service';
 import { Subscription } from 'rxjs';
 import { Document } from 'src/app/modules/document';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
