@@ -9,9 +9,12 @@ import io from 'socket.io-client';
 export class DocumentService {
   currentDocument = this.socket.fromEvent<Document>('document');
   documents = this.socket.fromEvent<string[]>('documents');
-  const socket = io.connect('http://localhost:3001');
-
+  
   constructor() { }
+  
+  const socket = io('http://localhost', {
+  path: '/myownpath'
+});
 
   getDocument(id: string) {
     this.socket.emit('getDoc', id);
