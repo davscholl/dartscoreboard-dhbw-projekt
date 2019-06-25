@@ -8,6 +8,7 @@ import { Document } from '../modules/document';
 export class DocumentService {
   currentDocument = this.socket.fromEvent<Document>('document');
   documents = this.socket.fromEvent<string[]>('documents');
+  const socket = io.connect('http://localhost:3001');
 
   constructor(private socket: Socket) { }
 
