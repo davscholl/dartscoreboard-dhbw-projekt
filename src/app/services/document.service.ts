@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
+//import { Socket } from 'ngx-socket-io';
 import { Document } from '../modules/document';
+import io from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class DocumentService {
   documents = this.socket.fromEvent<string[]>('documents');
   const socket = io.connect('http://localhost:3001');
 
-  constructor(private socket: Socket) { }
+  constructor() { }
 
   getDocument(id: string) {
     this.socket.emit('getDoc', id);
