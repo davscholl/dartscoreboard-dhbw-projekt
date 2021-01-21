@@ -34,7 +34,7 @@
     "ngx-socket-io": "^2.1.1",
     "rxjs": "~6.5.2",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
